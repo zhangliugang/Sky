@@ -1,0 +1,84 @@
+//
+//  CurrentWeatherViewModel.swift
+//  Sky
+//
+//  Created by 张留岗 on 6/1/18.
+//  Copyright © 2018 Mars. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+struct CurrentWeatherViewModel {
+	var isLocationReady = false
+	var isWeatherReady = false
+	
+	var isUpdateReady: Bool {
+		return isLocationReady && isWeatherReady
+	}
+	
+	var locatoin: Location! {
+		didSet {
+			self.isLocationReady = locatoin != nil
+		}
+	}
+	var weather: WeatherData! {
+		didSet {
+			self.isWeatherReady = weather != nil
+		}
+	}
+	
+	var city: String {
+		return locatoin.name
+	}
+	
+	var temperature: String {
+		return String(format: "%.1f °C", weather.currently.temperature.toCelcius())
+	}
+	
+	var humidity: String {
+		return String(format: "%.1f %%", weather.currently.humidity * 100)
+	}
+	
+	var summary: String {
+		return weather.currently.summary
+	}
+	
+	var date: String {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "E, dd MMMM"
+
+		return formatter.string(from: weather.currently.time)
+	}
+	
+	var weatherIcon: UIImage {
+		return UIImage.weatherIcon(of: weather.currently.icon)!
+	}
+}
+
+extension UIImage {
+	class func weatherIcon(of name: String) -> UIImage? {
+		switch name {
+		case "clear-day":
+			return UIImage(named: "clear-day")
+		case "clear-night":
+			return UIImage(named: "clear-night")
+		case "rain":
+			return UIImage(named: "rain")
+		case "snow":
+			return UIImage(named: "snow")
+		case "sleet":
+			return UIImage(named: "sleet")
+		case "wind":
+			return UIImage(named: "wind")
+		case "cloudy":
+			return UIImage(named: "cloudy")
+		case "partly-cloudy-day":
+			return UIImage(named: "partly-cloudy-day")
+		case "partly-cloudy-night":
+			return UIImage(named: "partly-cloudy-night")
+		default:
+			return UIImage(named: "clear-day")
+		}
+	}
+}
