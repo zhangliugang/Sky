@@ -33,7 +33,13 @@ struct CurrentWeatherViewModel {
 	}
 	
 	var temperature: String {
-		return String(format: "%.1f °C", weather.currently.temperature.toCelcius())
+        switch UserDefaults.temperatureMode() {
+        case .celsius:
+            return String(format: "%.1f °C", weather.currently.temperature.toCelcius())
+        case .fahrenheit:
+            return String(format: "%.1f °F", weather.currently.temperature)
+        }
+		
 	}
 	
 	var humidity: String {
@@ -46,7 +52,7 @@ struct CurrentWeatherViewModel {
 	
 	var date: String {
 		let formatter = DateFormatter()
-		formatter.dateFormat = "E, dd MMMM"
+		formatter.dateFormat = UserDefaults.dateMode().format
 
 		return formatter.string(from: weather.currently.time)
 	}

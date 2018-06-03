@@ -12,6 +12,7 @@ struct WeatherData: Codable {
 	let latitude: Double
 	let longitude: Double
 	let currently: CurrentWeather
+    let daily: WeekWeatherData
 	
 	struct CurrentWeather: Codable {
 		let time: Date
@@ -20,4 +21,14 @@ struct WeatherData: Codable {
 		let temperature: Double
 		let humidity: Double
 	}
+    
+    struct WeekWeatherData: Codable {
+        let data: [ForecastData]
+    }
+}
+
+extension WeatherData.WeekWeatherData: Equatable {
+    static func ==(lhs: WeatherData.WeekWeatherData, rhs: WeatherData.WeekWeatherData) -> Bool {
+        return lhs.data == rhs.data
+    }
 }

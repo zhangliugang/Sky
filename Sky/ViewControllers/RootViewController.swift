@@ -12,6 +12,9 @@ import CoreLocation
 class RootViewController: UIViewController {
 	
 	var currentWeatherViewController: CurrentWeatherViewController!
+    var weekWeatherViewController: WeekWeatherViewController!
+    
+    private let segueSettings = "segueSetting"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,15 +24,40 @@ class RootViewController: UIViewController {
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		guard let identifier = segue.identifier else { return }
-		guard let destination = segue.destination as? CurrentWeatherViewController else {
-			fatalError("Invalid destination view controller!")
-		}
+		
 		if identifier == "segueCurrentWeather" {
+            guard let destination = segue.destination as? CurrentWeatherViewController else {
+                fatalError("Invalid destination view controller!")
+            }
 			destination.delegate = self
 			destination.viewModel = CurrentWeatherViewModel()
 			currentWeatherViewController = destination
 		}
+        if identifier == "segueWeekWeather" {
+            guard let destination = segue.destination as? WeekWeatherViewController else {
+                fatalError("Invalid destination view controller!")
+            }
+            weekWeatherViewController = destination
+        }
+        if identifier == segueSettings  {
+            guard let navigationController =
+                segue.destination as? UINavigationController else {
+                    fatalError("Invalid destination view controller!")
+            }
+            
+            guard let destination =
+                navigationController.topViewController as?
+                SettingViewController else {
+                    fatalError("Invalid destination view controller!")
+            }
+            
+            destination.delegate = self
+        }
 	}
+    
+    @IBAction func unwindToRootViewController(
+        segue: UIStoryboardSegue) {
+    }
 	
 	private var currentLocation: CLLocation? {
 		didSet {
@@ -90,6 +118,7 @@ class RootViewController: UIViewController {
 				dump(error)
 			} else if let response = response {
 				self.currentWeatherViewController.viewModel?.weather = response
+                self.weekWeatherViewController.viewModel = WeekWeatherViewModel(weatherData: response.daily.data)
 			}
 		}
 	}
@@ -98,6 +127,7 @@ class RootViewController: UIViewController {
 extension RootViewController: CLLocationManagerDelegate {
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		if let location = locations.first {
+            print("\(location.coordinate.latitude),\(location.coordinate.longitude)")
 			currentLocation = location
 			manager.delegate = nil
 			manager.stopUpdatingLocation()
@@ -121,6 +151,24 @@ extension RootViewController: CurrentWeatherViewControllerDelegate {
 	}
 	
 	func settingButtonPressed(controller: CurrentWeatherViewController) {
-		print("Open settings.")
+//        print("Open settings.")
+        performSegue(withIdentifier: segueSettings, sender: nil)
 	}
+}
+
+extension RootViewController: SettingsViewControllerDelegate {
+    private func reloadUI() {
+        currentWeatherViewController.updateView()
+        weekWeatherViewController.updateView()
+    }
+    
+    func controllerDidChangeTimeMode(
+        controller: SettingViewController) {
+        reloadUI()
+    }
+    
+    func controllerDidChangeTemperatureMode(
+        controller: SettingViewController) {
+        reloadUI()
+    }
 }
