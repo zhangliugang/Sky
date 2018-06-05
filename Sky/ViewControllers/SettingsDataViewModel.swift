@@ -8,14 +8,14 @@
 
 import UIKit
 
-struct SettingsDataViewModel {
+struct SettingsDataViewModel: SettingRepresentable {
     let dateMode: DateMode
     
     var labelText: String {
         return dateMode == .text ? "Fri, 01 December" : "F, 12/01"
     }
     
-    var accessary: UITableViewCellAccessoryType {
+    var accessory: UITableViewCellAccessoryType {
         if UserDefaults.dateMode() == dateMode {
             return .checkmark
         } else {

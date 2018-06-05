@@ -58,7 +58,7 @@ class CurrentWeatherViewController: WeatherViewController {
 }
 
 extension Double {
-	func toCelcius() -> Double {
+	func toCelsius() -> Double {
 		return (self - 32.0) / 1.8
 	}
 }

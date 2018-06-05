@@ -23,6 +23,14 @@ class WeekWeatherTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+	func fonfigure(with vm: WeekWeatherDayRepresentable) {
+		week.text = vm.week
+		date.text = vm.date
+		humid.text = vm.humidity
+		temperature.text = vm.temperature
+		weatherIcon.image = vm.weatherIcon
+	}
+	
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

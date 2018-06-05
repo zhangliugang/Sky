@@ -21,7 +21,12 @@ struct WeekWeatherViewModel {
     var numberOfDays: Int {
         return weatherData.count
     }
-    
+	
+	func viewModel(for index:Int) -> WeekWeatherDayViewModel {
+		return WeekWeatherDayViewModel(weatherData: weatherData[index])
+	}
+	
+	/**
     func week(for index: Int) -> String {
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(
@@ -54,9 +59,10 @@ struct WeekWeatherViewModel {
     private func format(temperature: Double) -> String {
         switch UserDefaults.temperatureMode() {
         case .celsius:
-            return String(format: "%.0f °C", temperature.toCelcius())
+            return String(format: "%.0f °C", temperature.toCelsius())
         case .fahrenheit:
             return String(format: "%.0f °F", temperature)
         }
     }
+*/
 }

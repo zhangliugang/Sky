@@ -87,23 +87,24 @@ extension SettingViewController {
         guard let section = Section(rawValue: indexPath.section) else {
             fatalError("Unexpected section index")
         }
+		
+		var vm: SettingRepresentable?
         
         switch section {
         case .date:
             guard let dateMode = DateMode(rawValue: indexPath.row) else {
                 fatalError("Invalide IndexPath")
             }
-            let viewmodel = SettingsDataViewModel(dateMode: dateMode)
-            cell.accessoryType = viewmodel.accessary
-            cell.label.text = viewmodel.labelText
+            vm = SettingsDataViewModel(dateMode: dateMode)
         case .temperature:
             guard let temp = TemperatureMode(rawValue: indexPath.row) else {
                 fatalError("Invalide IndexPath")
             }
-            let viewmodel = SettingsTemperatureViewModel(temperatureMode: temp)
-            cell.accessoryType = viewmodel.accessory
-            cell.label.text = viewmodel.labelText
+            vm = SettingsTemperatureViewModel(temperatureMode: temp)
         }
+		if let vm = vm {
+			cell.configure(with: vm)
+		}
         
         return cell
     }

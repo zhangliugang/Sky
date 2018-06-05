@@ -17,4 +17,9 @@ class SettingsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
     }
+	
+	func configure(with vm: SettingRepresentable)  {
+		label.text = vm.labelText
+		accessoryType = vm.accessory
+	}
 }

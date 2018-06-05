@@ -35,7 +35,7 @@ struct CurrentWeatherViewModel {
 	var temperature: String {
         switch UserDefaults.temperatureMode() {
         case .celsius:
-            return String(format: "%.1f °C", weather.currently.temperature.toCelcius())
+            return String(format: "%.1f °C", weather.currently.temperature.toCelsius())
         case .fahrenheit:
             return String(format: "%.1f °F", weather.currently.temperature)
         }
