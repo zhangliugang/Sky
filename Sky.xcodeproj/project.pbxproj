@@ -43,6 +43,7 @@
 		9ABB099A20C6918500D6329C /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB099920C6918500D6329C /* LocationTableViewCell.swift */; };
 		9ABB099C20C691DB00D6329C /* LocationRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB099B20C691DB00D6329C /* LocationRepresentable.swift */; };
 		9ABB099E20C6920100D6329C /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB099D20C6920100D6329C /* LocationViewModel.swift */; };
+		9ABB09A020C7B77500D6329C /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB099F20C7B77500D6329C /* AddLocationViewController.swift */; };
 		A2D31F2E6F681D637F701034 /* Pods_Sky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387BF77D1EA9F0B11CBD602E /* Pods_Sky.framework */; };
 		D006232C51DE671862245A3E /* Pods_SkyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F516E6CAE86EBB4B57DFD9 /* Pods_SkyTests.framework */; };
 /* End PBXBuildFile section */
@@ -113,6 +114,7 @@
 		9ABB099920C6918500D6329C /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		9ABB099B20C691DB00D6329C /* LocationRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepresentable.swift; sourceTree = "<group>"; };
 		9ABB099D20C6920100D6329C /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		9ABB099F20C7B77500D6329C /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		A0F516E6CAE86EBB4B57DFD9 /* Pods_SkyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7AEE8570A2A3EF0F1751FB /* Pods_SkyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -323,6 +325,7 @@
 				9ABB099920C6918500D6329C /* LocationTableViewCell.swift */,
 				9ABB099B20C691DB00D6329C /* LocationRepresentable.swift */,
 				9ABB099D20C6920100D6329C /* LocationViewModel.swift */,
+				9ABB099F20C7B77500D6329C /* AddLocationViewController.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				9A3FC20420BFEF8B00EA8BBF /* URLSessionProtocol.swift in Sources */,
 				9713A40C20C3B9B60035A9C8 /* WeekWeatherViewController.swift in Sources */,
 				9A3FC20E20C0DF3100EA8BBF /* CurrentWeatherViewController.swift in Sources */,
+				9ABB09A020C7B77500D6329C /* AddLocationViewController.swift in Sources */,
 				9A3FC20C20C0DC5900EA8BBF /* WeatherViewController.swift in Sources */,
 				9713A41420C3CA880035A9C8 /* UserDefaults.swift in Sources */,
 				9ABB099C20C691DB00D6329C /* LocationRepresentable.swift in Sources */,

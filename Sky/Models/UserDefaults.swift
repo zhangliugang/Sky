@@ -25,6 +25,7 @@ enum TemperatureMode: Int {
 struct UserDefaultsKeys {
     static let dateMode = "dateMode"
     static let temperatureMode = "temperatureMode"
+	static let locations = "locations"
 }
 
 extension UserDefaults {
@@ -54,4 +55,36 @@ extension UserDefaults {
             value.rawValue,
             forKey: UserDefaultsKeys.temperatureMode)
     }
+	
+	static func saveLocations(_ locations: [Location]) {
+		let dictionaries = locations.map { $0.toDictionary }
+		UserDefaults.standard.set(dictionaries, forKey: UserDefaultsKeys.locations)
+	}
+	
+	static func loadLocations() -> [Location] {
+		let data = UserDefaults.standard.array(forKey: UserDefaultsKeys.locations)
+		guard let dictionaries = data as? [[String: Any]] else {
+			return []
+		}
+		return dictionaries.compactMap { Location(from: $0) }
+	}
+	
+	static func addLocatoin(_ location: Location) {
+		var locations = loadLocations()
+		locations.append(location)
+		
+		saveLocations(locations)
+	}
+	
+	static func removeLocation(_ location: Location) {
+		var locations = loadLocations()
+		
+		guard let index = locations.index(of: location) else {
+			return
+		}
+		
+		locations.remove(at: index)
+		
+		saveLocations(locations)
+	}
 }

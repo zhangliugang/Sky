@@ -15,6 +15,7 @@ class RootViewController: UIViewController {
     var weekWeatherViewController: WeekWeatherViewController!
     
     private let segueSettings = "segueSetting"
+	private let segueLocatoin = "segueLocation"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,14 @@ class RootViewController: UIViewController {
             
             destination.delegate = self
         }
+		if identifier == segueLocatoin {
+			guard let navigationController = segue.destination as? UINavigationController,
+				let destination = navigationController.topViewController as? LocationViewController else {
+					fatalError("Invalid destination view controller!")
+			}
+			destination.delegate = self
+			destination.currentLocation = currentLocation
+		}
 	}
     
     @IBAction func unwindToRootViewController(
@@ -147,11 +156,10 @@ extension RootViewController: CLLocationManagerDelegate {
 
 extension RootViewController: CurrentWeatherViewControllerDelegate {
 	func locationButtonPressed(controller: CurrentWeatherViewController) {
-		print("Open locations.")
+		performSegue(withIdentifier: segueLocatoin, sender: nil)
 	}
 	
 	func settingButtonPressed(controller: CurrentWeatherViewController) {
-//        print("Open settings.")
         performSegue(withIdentifier: segueSettings, sender: nil)
 	}
 }
@@ -171,4 +179,10 @@ extension RootViewController: SettingsViewControllerDelegate {
         controller: SettingViewController) {
         reloadUI()
     }
+}
+
+extension RootViewController: LocationViewControllerDelegate {
+	func controller(_ controller: LocationViewController, didSelectLocation location: CLLocation) {
+		currentLocation = location
+	}
 }
