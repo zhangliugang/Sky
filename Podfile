@@ -6,6 +6,8 @@ target 'Sky' do
   use_frameworks!
 
   # Pods for Sky
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
   target 'SkyTests' do
     inherit! :search_paths

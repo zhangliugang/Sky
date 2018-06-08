@@ -44,6 +44,7 @@
 		9ABB099C20C691DB00D6329C /* LocationRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB099B20C691DB00D6329C /* LocationRepresentable.swift */; };
 		9ABB099E20C6920100D6329C /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB099D20C6920100D6329C /* LocationViewModel.swift */; };
 		9ABB09A020C7B77500D6329C /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB099F20C7B77500D6329C /* AddLocationViewController.swift */; };
+		9AE220EB20CA21A1005F5DFB /* AddLocatoinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE220EA20CA21A1005F5DFB /* AddLocatoinViewModel.swift */; };
 		A2D31F2E6F681D637F701034 /* Pods_Sky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387BF77D1EA9F0B11CBD602E /* Pods_Sky.framework */; };
 		D006232C51DE671862245A3E /* Pods_SkyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F516E6CAE86EBB4B57DFD9 /* Pods_SkyTests.framework */; };
 /* End PBXBuildFile section */
@@ -115,6 +116,7 @@
 		9ABB099B20C691DB00D6329C /* LocationRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepresentable.swift; sourceTree = "<group>"; };
 		9ABB099D20C6920100D6329C /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		9ABB099F20C7B77500D6329C /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
+		9AE220EA20CA21A1005F5DFB /* AddLocatoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocatoinViewModel.swift; sourceTree = "<group>"; };
 		A0F516E6CAE86EBB4B57DFD9 /* Pods_SkyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7AEE8570A2A3EF0F1751FB /* Pods_SkyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -326,6 +328,7 @@
 				9ABB099B20C691DB00D6329C /* LocationRepresentable.swift */,
 				9ABB099D20C6920100D6329C /* LocationViewModel.swift */,
 				9ABB099F20C7B77500D6329C /* AddLocationViewController.swift */,
+				9AE220EA20CA21A1005F5DFB /* AddLocatoinViewModel.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				6890B80A1F7CC25500ACB755 /* Sources */,
 				6890B80B1F7CC25500ACB755 /* Frameworks */,
 				6890B80C1F7CC25500ACB755 /* Resources */,
+				05F00983A27C361A55E84A50 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -476,6 +480,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		05F00983A27C361A55E84A50 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Sky/Pods-Sky-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sky/Pods-Sky-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		079206B1E134F1154008FBA4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -563,6 +587,7 @@
 				6890B8121F7CC25500ACB755 /* AppDelegate.swift in Sources */,
 				9713A41D20C41D420035A9C8 /* SettingsTemperatureViewModel.swift in Sources */,
 				9A3FC21020C11D9F00EA8BBF /* CurrentWeatherViewModel.swift in Sources */,
+				9AE220EB20CA21A1005F5DFB /* AddLocatoinViewModel.swift in Sources */,
 				9713A41B20C41C980035A9C8 /* SettingsDataViewModel.swift in Sources */,
 				9713A40E20C3BA2A0035A9C8 /* WeekWeatherTableViewCell.swift in Sources */,
 			);
