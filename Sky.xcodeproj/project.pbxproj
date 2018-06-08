@@ -45,6 +45,8 @@
 		9ABB099E20C6920100D6329C /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB099D20C6920100D6329C /* LocationViewModel.swift */; };
 		9ABB09A020C7B77500D6329C /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB099F20C7B77500D6329C /* AddLocationViewController.swift */; };
 		9AE220EB20CA21A1005F5DFB /* AddLocatoinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE220EA20CA21A1005F5DFB /* AddLocatoinViewModel.swift */; };
+		9AE220ED20CA559A005F5DFB /* CurrentLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE220EC20CA559A005F5DFB /* CurrentLocationViewModel.swift */; };
+		9AE220EF20CA6BA1005F5DFB /* CLLocationManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE220EE20CA6BA1005F5DFB /* CLLocationManager+Rx.swift */; };
 		A2D31F2E6F681D637F701034 /* Pods_Sky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387BF77D1EA9F0B11CBD602E /* Pods_Sky.framework */; };
 		D006232C51DE671862245A3E /* Pods_SkyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F516E6CAE86EBB4B57DFD9 /* Pods_SkyTests.framework */; };
 /* End PBXBuildFile section */
@@ -117,6 +119,8 @@
 		9ABB099D20C6920100D6329C /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		9ABB099F20C7B77500D6329C /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		9AE220EA20CA21A1005F5DFB /* AddLocatoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocatoinViewModel.swift; sourceTree = "<group>"; };
+		9AE220EC20CA559A005F5DFB /* CurrentLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewModel.swift; sourceTree = "<group>"; };
+		9AE220EE20CA6BA1005F5DFB /* CLLocationManager+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Rx.swift"; sourceTree = "<group>"; };
 		A0F516E6CAE86EBB4B57DFD9 /* Pods_SkyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7AEE8570A2A3EF0F1751FB /* Pods_SkyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -197,6 +201,7 @@
 				6890B8421F7CC3BF00ACB755 /* Storyboards */,
 				6890B8431F7CC3C600ACB755 /* SupportingFiles */,
 				6890B8441F7CC3CF00ACB755 /* ViewControllers */,
+				9AE220EE20CA6BA1005F5DFB /* CLLocationManager+Rx.swift */,
 			);
 			path = Sky;
 			sourceTree = "<group>";
@@ -263,6 +268,7 @@
 				9A3FC20B20C0DC5900EA8BBF /* WeatherViewController.swift */,
 				9A3FC20D20C0DF3100EA8BBF /* CurrentWeatherViewController.swift */,
 				9A3FC20F20C11D9F00EA8BBF /* CurrentWeatherViewModel.swift */,
+				9AE220EC20CA559A005F5DFB /* CurrentLocationViewModel.swift */,
 				9713A40B20C3B9B60035A9C8 /* WeekWeatherViewController.swift */,
 				9713A40D20C3BA2A0035A9C8 /* WeekWeatherTableViewCell.swift */,
 				9713A41120C3BAE70035A9C8 /* WeekWeatherViewModel.swift */,
@@ -578,6 +584,7 @@
 				9A3FC1F720BFD70600EA8BBF /* Configuration.swift in Sources */,
 				9ABB099220C6816600D6329C /* WeekWeatherDayViewModel.swift in Sources */,
 				6890B8141F7CC25500ACB755 /* RootViewController.swift in Sources */,
+				9AE220ED20CA559A005F5DFB /* CurrentLocationViewModel.swift in Sources */,
 				9ABB099E20C6920100D6329C /* LocationViewModel.swift in Sources */,
 				9ABB099820C6899600D6329C /* LocationViewController.swift in Sources */,
 				9ABB099A20C6918500D6329C /* LocationTableViewCell.swift in Sources */,
@@ -587,6 +594,7 @@
 				6890B8121F7CC25500ACB755 /* AppDelegate.swift in Sources */,
 				9713A41D20C41D420035A9C8 /* SettingsTemperatureViewModel.swift in Sources */,
 				9A3FC21020C11D9F00EA8BBF /* CurrentWeatherViewModel.swift in Sources */,
+				9AE220EF20CA6BA1005F5DFB /* CLLocationManager+Rx.swift in Sources */,
 				9AE220EB20CA21A1005F5DFB /* AddLocatoinViewModel.swift in Sources */,
 				9713A41B20C41C980035A9C8 /* SettingsDataViewModel.swift in Sources */,
 				9713A40E20C3BA2A0035A9C8 /* WeekWeatherTableViewCell.swift in Sources */,

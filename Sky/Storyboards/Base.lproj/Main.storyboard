@@ -175,7 +175,7 @@
                     <connections>
                         <outlet property="activityIndicatorView" destination="OIQ-SI-qSV" id="93z-tb-VId"/>
                         <outlet property="dateLabel" destination="myf-y8-Xus" id="xrS-7d-cji"/>
-                        <outlet property="humiditytLabel" destination="pDh-EQ-gxN" id="vOa-6X-OO9"/>
+                        <outlet property="humidityLabel" destination="pDh-EQ-gxN" id="ibm-4v-B8v"/>
                         <outlet property="loadingFailedLabel" destination="ZHi-wf-6MY" id="fcn-f7-fuA"/>
                         <outlet property="locationLabel" destination="iIL-QY-WDE" id="JQS-H9-DiS"/>
                         <outlet property="summaryLabel" destination="ikz-Og-KFL" id="WPZ-Zk-148"/>

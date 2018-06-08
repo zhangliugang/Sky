@@ -8,8 +8,11 @@
 
 import UIKit
 import CoreLocation
+import RxSwift
+import RxCocoa
 
 class RootViewController: UIViewController {
+	private var bag = DisposeBag()
 	
 	var currentWeatherViewController: CurrentWeatherViewController!
     var weekWeatherViewController: WeekWeatherViewController!
@@ -31,7 +34,6 @@ class RootViewController: UIViewController {
                 fatalError("Invalid destination view controller!")
             }
 			destination.delegate = self
-			destination.viewModel = CurrentWeatherViewModel()
 			currentWeatherViewController = destination
 		}
         if identifier == "segueWeekWeather" {
@@ -86,7 +88,14 @@ class RootViewController: UIViewController {
 		locationManager.delegate = self
 		
 		if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-			locationManager.requestLocation()
+//			locationManager.requestLocation()
+			self.locationManager.startUpdatingLocation()
+			self.locationManager.rx
+				.didUpdateLocations
+				.take(1)
+				.subscribe(onNext: {
+					self.currentLocation = $0.first
+				}).disposed(by: bag)
 		} else {
 			locationManager.requestWhenInUseAuthorization()
 		}
@@ -111,7 +120,8 @@ class RootViewController: UIViewController {
 			} else if let city = placemarks?.first?.locality {
 				// TODO:
 				let location = Location(name: city, latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
-				self.currentWeatherViewController.viewModel?.locatoin = location
+				self.currentWeatherViewController.locationVM
+					.accept(CurrentLocationViewModel(location: location))
 			}
 		}
 	}
@@ -122,14 +132,18 @@ class RootViewController: UIViewController {
 		let lat = currentLocation.coordinate.latitude
 		let lon = currentLocation.coordinate.longitude
 		
-		WeatherDataManager.shared.weatherDataAt(latitude: lat, longitude: lon) { (response, error) in
-			if let error = error {
-				dump(error)
-			} else if let response = response {
-				self.currentWeatherViewController.viewModel?.weather = response
-                self.weekWeatherViewController.viewModel = WeekWeatherViewModel(weatherData: response.daily.data)
-			}
-		}
+		let weather = WeatherDataManager.shared
+			.weatherDataAt(latitude: lat, longitude: lon)
+			.share(replay: 1, scope: .whileConnected)
+			.observeOn(MainScheduler.instance)
+		weather.map { CurrentWeatherViewModel(weather: $0) }
+			.bind(to: self.currentWeatherViewController.weatherVM)
+			.disposed(by: bag)
+		weather.map { WeekWeatherViewModel(weatherData: $0.daily.data) }
+			.subscribe(onNext: {
+				self.weekWeatherViewController.viewModel = $0
+			})
+			.disposed(by: bag)
 	}
 }
 

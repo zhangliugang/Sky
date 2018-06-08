@@ -10,28 +10,14 @@ import Foundation
 import UIKit
 
 struct CurrentWeatherViewModel {
-	var isLocationReady = false
-	var isWeatherReady = false
-	
-	var isUpdateReady: Bool {
-		return isLocationReady && isWeatherReady
+
+	static let empty = CurrentWeatherViewModel(weather: WeatherData.empty)
+
+	var isEmpty: Bool {
+		return self.weather == WeatherData.empty
 	}
-	
-	var locatoin: Location! {
-		didSet {
-			self.isLocationReady = locatoin != nil
-		}
-	}
-	var weather: WeatherData! {
-		didSet {
-			self.isWeatherReady = weather != nil
-		}
-	}
-	
-	var city: String {
-		return locatoin.name
-	}
-	
+	var weather: WeatherData!
+
 	var temperature: String {
         switch UserDefaults.temperatureMode() {
         case .celsius:
