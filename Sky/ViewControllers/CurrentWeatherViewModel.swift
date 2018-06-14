@@ -12,10 +12,16 @@ import UIKit
 struct CurrentWeatherViewModel {
 
 	static let empty = CurrentWeatherViewModel(weather: WeatherData.empty)
-
+	static let inlid = CurrentWeatherViewModel(weather: .invalid)
+	
 	var isEmpty: Bool {
 		return self.weather == WeatherData.empty
 	}
+	
+	var isInvalid: Bool {
+		return self.weather == .invalid
+	}
+	
 	var weather: WeatherData!
 
 	var temperature: String {

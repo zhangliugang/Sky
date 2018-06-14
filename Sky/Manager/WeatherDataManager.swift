@@ -36,11 +36,46 @@ final class WeatherDataManager {
 		request.setValue("applicatoin/json", forHTTPHeaderField: "Content-Type")
 		request.httpMethod = "GET"
 		
-		return (self.urlSession as! URLSession).rx.data(request: request)
+		let MAX_ATTEMPTS = 4
+		
+		return (self.urlSession as! URLSession)
+			.rx
+			.data(request: request)
 			.map {
 				let decoder = JSONDecoder()
 				decoder.dateDecodingStrategy = .secondsSince1970
 				return try decoder.decode(WeatherData.self, from: $0)
-		}
+			}
+			.materialize()
+			.do(onNext: { print("Materialize: \($0)") })
+			.dematerialize()
+			.retryWhen { e in e.enumerated().flatMap {
+				(attempt, error) -> Observable<Int> in
+					if (attempt >= MAX_ATTEMPTS) {
+						print("------- \(attempt + 1) attempt -------")
+						return Observable.error(error)
+					} else {
+						print("-------- \(attempt + 1) Retry --------")
+						return Observable<Int>.timer(Double(attempt), scheduler: MainScheduler.instance)
+							.take(1)
+					}
+				}
+			}
+			.catchErrorJustReturn(WeatherData.invalid)
+		
 	}
 }
+
+//extension URLSession {
+//
+//	func dataTask(with url: URL, completionHandler: @escaping (String?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+//		fatalError()
+//	}
+//
+//	func  start()  {
+//		let url = URL(string: "")!
+//		URLSession.shared.dataTask(with: url) { (d: String?, r, e) in
+//
+//		}.resume()
+//	}
+//}

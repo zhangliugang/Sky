@@ -18,11 +18,20 @@ struct WeatherData: Codable {
 		latitude: 0,
 		longitude: 0,
 		currently: CurrentWeather(
-			time: Date(),
+			time: Date.from(string: "1970-01-01"),
 			summary: "",
 			icon: "",
 			temperature: 0,
 			humidity: 0),
+		daily: WeekWeatherData(data: []))
+	
+	static let invalid = WeatherData(
+		latitude: 0,
+		longitude: 0,
+		currently: CurrentWeather(
+			time: Date.from(string: "1970-01-01"),
+			summary: "n/a", icon: "n/a",
+			temperature: -274, humidity: -1),
 		daily: WeekWeatherData(data: []))
 	
 	struct CurrentWeather: Codable {
@@ -47,3 +56,13 @@ extension WeatherData.WeekWeatherData: Equatable {
 }
 
 extension WeatherData.CurrentWeather: Equatable {}
+
+
+extension Date {
+	static func from(string: String) -> Date {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy-mm-dd"
+		dateFormatter.timeZone = TimeZone(abbreviation: "GMT+8:00")
+		return dateFormatter.date(from: string)!
+	}
+}

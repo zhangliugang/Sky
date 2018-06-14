@@ -70,6 +70,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zI-hR-ahP">
+                                <rect key="frame" x="169" y="160" width="37" height="30"/>
+                                <state key="normal" title="Retry"/>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IiS-hx-2tS">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="259"/>
                                 <subviews>
@@ -165,9 +169,11 @@
                             <constraint firstAttribute="trailing" secondItem="ZHi-wf-6MY" secondAttribute="trailing" constant="8" id="KYU-om-4QV"/>
                             <constraint firstAttribute="trailing" secondItem="IiS-hx-2tS" secondAttribute="trailing" id="Q9O-lb-sEo"/>
                             <constraint firstItem="IiS-hx-2tS" firstAttribute="top" secondItem="G7v-fL-Tbu" secondAttribute="top" id="Tkv-Pr-U5m"/>
+                            <constraint firstItem="5zI-hR-ahP" firstAttribute="top" secondItem="ZHi-wf-6MY" secondAttribute="bottom" constant="20" id="j3g-QZ-sIf"/>
                             <constraint firstAttribute="bottom" secondItem="IiS-hx-2tS" secondAttribute="bottom" id="kB8-q8-naa"/>
                             <constraint firstItem="IiS-hx-2tS" firstAttribute="leading" secondItem="G7v-fL-Tbu" secondAttribute="leading" id="lvv-0U-UhJ"/>
                             <constraint firstItem="OIQ-SI-qSV" firstAttribute="centerY" secondItem="G7v-fL-Tbu" secondAttribute="centerY" id="oCU-eU-qoI"/>
+                            <constraint firstItem="5zI-hR-ahP" firstAttribute="centerX" secondItem="G7v-fL-Tbu" secondAttribute="centerX" id="rW6-Tg-rQP"/>
                             <constraint firstItem="ZHi-wf-6MY" firstAttribute="leading" secondItem="G7v-fL-Tbu" secondAttribute="leading" constant="8" id="uqs-gp-pzp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SGU-Gx-HbT"/>
@@ -178,6 +184,7 @@
                         <outlet property="humidityLabel" destination="pDh-EQ-gxN" id="ibm-4v-B8v"/>
                         <outlet property="loadingFailedLabel" destination="ZHi-wf-6MY" id="fcn-f7-fuA"/>
                         <outlet property="locationLabel" destination="iIL-QY-WDE" id="JQS-H9-DiS"/>
+                        <outlet property="retryBtn" destination="5zI-hR-ahP" id="dUx-DH-5Uw"/>
                         <outlet property="summaryLabel" destination="ikz-Og-KFL" id="WPZ-Zk-148"/>
                         <outlet property="temperatureLabel" destination="dBP-KT-Pob" id="7fQ-Mf-feB"/>
                         <outlet property="weatherContainerView" destination="IiS-hx-2tS" id="1jN-NY-kxZ"/>

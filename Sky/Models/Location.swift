@@ -21,6 +21,9 @@ struct Location {
 		latitude: 0,
 		longitude: 0)
 	
+	static let invalid =
+		Location(name: "n/a", latitude: 0, longitude: 0)
+	
 	var name: String
 	var latitude: Double
 	var longitude: Double
